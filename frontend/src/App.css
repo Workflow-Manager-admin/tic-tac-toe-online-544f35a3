@@ -1,0 +1,198 @@
+/* Theme variables */
+:root {
+  --primary: #1b4de4;
+  --secondary: #e1e8ee;
+  --accent: #23ca5c;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #232532;
+  --border-color: #e2e5ed;
+  --ttt-shadow: 0 4px 24px rgba(27,77,228,0.06);
+  --button-bg: #007bff;
+  --button-text: #fff;
+  --highlight: #ffecb3;
+}
+
+/* General app styles */
+.App {
+  text-align: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--bg-secondary);
+  padding: 0;
+}
+
+/* Theme toggle button - reused */
+.theme-toggle {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--primary);
+  color: var(--button-text);
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.theme-toggle:hover { background: var(--accent); }
+
+/* Title & footer */
+.ttt-title { font-size: 2.2rem; font-weight: 700; margin-top: 48px; margin-bottom: 10px; letter-spacing: 2px;}
+.ttt-footer { margin-top: 32px; margin-bottom: 12px; font-size: .98rem; color: #888; }
+
+/* Main Layout */
+.ttt-game-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 32px;
+  width: 100vw;
+  max-width: 1080px;
+}
+
+.ttt-board-and-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-primary);
+  box-shadow: var(--ttt-shadow);
+  border-radius: 20px;
+  padding: 32px 40px 30px 40px;
+  min-width: 300px;
+}
+
+.ttt-board {
+  width: 308px;
+  height: 308px;
+  display: grid;
+  grid-template: repeat(3,1fr) / repeat(3,1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+  background: var(--secondary);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(27,77,228,0.04);
+}
+
+/* Squares */
+.ttt-square {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px #ececec;
+  width: 90px; height: 90px;
+  font-size: 2.65rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  transition: background 0.13s, border 0.13s, color 0.13s;
+  display:flex;align-items:center;justify-content:center;
+  will-change: background,transform;
+  outline: none;
+}
+.ttt-square:active { background: var(--secondary);}
+.ttt-square:focus { outline: 2px solid var(--accent);}
+.ttt-highlight { background: var(--highlight); }
+
+.ttt-status {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+/* Buttons */
+.ttt-btn, .ttt-btn-alt {
+  display:inline-block;
+  margin: 7px 6px 0 0;
+  padding: 10px 22px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--button-text);
+  border: none;
+  font-size: 1.13rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  box-shadow: 0 2px 10px rgba(33,61,181,0.08);
+}
+.ttt-btn:hover { background: var(--accent);}
+.ttt-btn-alt {
+  background: #f2f5fe;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  font-weight: 500;
+}
+.ttt-btn-alt:hover { background: #e6f7f1; color: var(--accent); border-color: var(--accent);}
+.ttt-controls { display:flex; flex-direction:column; align-items:center; width:100%; margin-top:8px;}
+
+/* Move history */
+.ttt-history {
+  background: var(--bg-primary);
+  border-radius: 16px;
+  padding: 28px 16px 22px 16px;
+  min-width: 200px;
+  box-shadow: 0 2px 10px #e3eafd30;
+  border: 1.5px solid var(--border-color);
+}
+.ttt-history h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  color: var(--primary);
+  font-weight: 600;
+}
+.ttt-history ol {
+  list-style: decimal inside;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+.ttt-history li { margin-bottom: 7px; }
+.ttt-history button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.ttt-history button.ttt-history-active {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .ttt-game-area { flex-direction: column; align-items:center; gap:28px;}
+  .ttt-board-and-controls, .ttt-history { min-width:260px; }
+  .ttt-board { width: 246px; height: 246px;}
+  .ttt-square { width: 68px; height: 68px; font-size: 2rem; }
+  .App-header { overflow-x:hidden;}
+}
+
+@media (max-width:570px) {
+  .ttt-board { width: 99vw; max-width: 99vw; height: 35vw; max-height: 230px; }
+  .ttt-board-and-controls { padding: 10vw 2vw 3vw 2vw; min-width: 0; }
+  .ttt-square { width: 24vw; height:24vw; font-size:7vw; }
+  .ttt-history,.ttt-board-and-controls { box-shadow:none; border-radius:0;}
+  .theme-toggle { right:10px; top:10px; padding:7px 11px; font-size:.93rem;}
+  .ttt-title { margin-top:34px; font-size:1.5rem;}
+}
+
+/* Extra clean look for minimalism */
+.ttt-history, .ttt-board-and-controls, .ttt-board { border: none; }
